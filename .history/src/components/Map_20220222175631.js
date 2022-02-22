@@ -42,7 +42,7 @@ const Map = () => {
             {isMobile ? (
               <IoLocationSharp className="text-4xl text-blue-800" />
             ) : (
-              <div className="shadow shadow-lg w-24 h-auto bg-white p-2 rounded rounded-md bg-slate-500">
+              <div className="shadow shadow-lg w-24 h-auto bg-white p-2 rounded rounded-md bg-blue-400">
                 <span className="text-sm mb-2 block text-white font-semibold">{place.name}</span>
                 <img
                   className="w-full rounded rounded-lg"
