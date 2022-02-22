@@ -4,7 +4,7 @@ import { useHostels } from "../contexts/HostelContext";
 const Header = () => {
   const { search, handleSearch } = useHostels();
   return (
-    <div className="flex justify-between items-center px-6 h-16 shadow shadow-xl bg-slate-700">
+    <div className="flex justify-between items-center px-6 h-16 shadow shadow-xl bg-slate-600">
       <h1 className="hidden md:block text-white text-xl font-bold">
         Campus Hostels
       </h1>
