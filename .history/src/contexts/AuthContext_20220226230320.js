@@ -51,7 +51,7 @@ const AdminAuthProvider = ({ children }) => {
   const adminLogout = () => {
     console.log("signing out");
     signOut(auth);
-    setUser();
+    setUser({});
   };
 
   let values = {

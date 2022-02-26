@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import chlogo from "../assets/ch.svg";
-import { useLocation,useNavigate,Link } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import { useAdminAuth } from "../contexts/AuthContext";
 const AdminLogin = () => {
   const [state, setState] = useState({
@@ -26,10 +26,10 @@ const AdminLogin = () => {
         className="w-full md:w-96 shadow-lg h-auto p-7 rounded rounded-lg bg-gray-700"
         onSubmit={handleSubmit}
       >
-        <Link className="pointer" to='/' >
+        <div className="mb-6" >
           <img className="h-8 w-auto" src={chlogo} alt="" />
-        </Link>
-        <h2 className="text-white text-lg mt-6 mb-6 font-bold">Login as an Admin</h2>
+        </div>
+        <h2 className="text-white text-lg mb-6 font-bold">Login as an Admin</h2>
         <label className="block">
           <span className="block text-md font-medium text-slate-400 ">
             Email

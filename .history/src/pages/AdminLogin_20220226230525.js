@@ -26,10 +26,10 @@ const AdminLogin = () => {
         className="w-full md:w-96 shadow-lg h-auto p-7 rounded rounded-lg bg-gray-700"
         onSubmit={handleSubmit}
       >
-        <Link className="pointer" to='/' >
+        <Link className="mb-6" to='/' >
           <img className="h-8 w-auto" src={chlogo} alt="" />
         </Link>
-        <h2 className="text-white text-lg mt-6 mb-6 font-bold">Login as an Admin</h2>
+        <h2 className="text-white text-lg mb-6 font-bold">Login as an Admin</h2>
         <label className="block">
           <span className="block text-md font-medium text-slate-400 ">
             Email

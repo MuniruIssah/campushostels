@@ -11,7 +11,7 @@ const AdminAuthContext = React.createContext();
 export const useAdminAuth = () => useContext(AdminAuthContext);
 
 const AdminAuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     checkUserLoggedIn();
@@ -19,12 +19,11 @@ const AdminAuthProvider = ({ children }) => {
   const checkUserLoggedIn = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log('found a user')
         setUser(user);
         // ...
       } else {
-        console.log('found no user')
-        setUser();
+        
+        setUser({});
       }
     });
   };
@@ -51,7 +50,7 @@ const AdminAuthProvider = ({ children }) => {
   const adminLogout = () => {
     console.log("signing out");
     signOut(auth);
-    setUser();
+    setUser({});
   };
 
   let values = {

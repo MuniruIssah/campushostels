@@ -26,7 +26,7 @@ const AdminLogin = () => {
         className="w-full md:w-96 shadow-lg h-auto p-7 rounded rounded-lg bg-gray-700"
         onSubmit={handleSubmit}
       >
-        <Link className="pointer" to='/' >
+        <Link className="pointer mb-6 " to='/' >
           <img className="h-8 w-auto" src={chlogo} alt="" />
         </Link>
         <h2 className="text-white text-lg mt-6 mb-6 font-bold">Login as an Admin</h2>

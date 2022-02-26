@@ -3,9 +3,8 @@ import { Outlet, Link, NavLink } from "react-router-dom";
 import CampusesProvider from "../contexts/CampusContext";
 import HostelsProvider from "../contexts/HostelContext";
 import chlogo from "../assets/ch.svg";
-import { useAdminAuth } from "../contexts/AuthContext";
 const AdminMain = () => {
-  const { adminLogout } = useAdminAuth();
+  const {}=useAdmin
   return (
     <div className="w-screen h-screen bg-gray-200">
       <HostelsProvider>
@@ -15,10 +14,7 @@ const AdminMain = () => {
               <Link to="/">
                 <img className="h-6 w-auto sm:h-8" src={chlogo} />
               </Link>
-              <button
-                className="text-white py-1 px-3 bg-red-600 rounded rounded-lg text-sm"
-                onClick={adminLogout}
-              >
+              <button className="text-white py-1 px-3 bg-red-600 rounded rounded-lg" >
                 Logout
               </button>
             </div>
