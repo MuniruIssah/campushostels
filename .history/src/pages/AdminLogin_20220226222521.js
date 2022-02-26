@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+import chlogo from "../assets/ch.svg";
+import { useLocation,useNavigate } from "react-router-dom";
+import { useAdminAuth } from "../contexts/AuthContext";
+const AdminLogin = () => {
+  const [state, setState] = useState({
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const {adminLogin}=useAdminAuth()
+  const handleChange = (e) => {
+    const { value, id } = e.target;
+    setState({ ...state, [id]: value });
+  };
+  const handleSubmit = async (e) => {
+    let response=await adminLogin(state.username,state.password)
+    console.log(response)
+  };
+  return (
+    <div className="w-screen h-screen flex justify-center items-center p-6 bg-gray-900">
+      <form
+        className="w-full md:w-96 shadow-lg h-auto p-7 rounded rounded-lg bg-gray-700"
+        onSubmit={handleSubmit}
+      >
+        <div className="mb-6">
+          <img className="h-8 w-auto" src={chlogo} alt="" />
+        </div>
+        <h2 className="text-white text-lg mb-6 font-bold">Login as an Admin</h2>
+        <label className="block">
+          <span className="block text-md font-medium text-slate-400 ">
+            Email
+          </span>
+          <input
+            type="email"
+            id="username"
+            value={state.username}
+            onChange={handleChange}
+            className="mt-1 block w-full px-3 py-3 bg-gray-600  mb-4  rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 "
+          />
+        </label>
+        <label className="block">
+          <span className="block text-md font-medium text-slate-400  ">
+            Password
+          </span>
+          <input
+            id="password"
+            type="password"
+            value={state.password}
+            onChange={handleChange}
+            className="mt-1 block w-full px-3 py-3 bg-gray-600  mb-10  rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none invalid:border-pink-500 invalid:text-pink-600 focus:invalid:border-pink-500 focus:invalid:ring-pink-500 "
+          />
+        </label>
+        <button
+          type="submit"
+          className="block w-full px-5 py-3 text-center font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded rounded-lg"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default AdminLogin;

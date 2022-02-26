@@ -1,0 +1,48 @@
+import React, { useContext, useEffect, useState } from "react";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+import HashLoader from "react-spinners/HashLoader";
+import { app } from "../firebase.config";
+
+const db = getFirestore(app);
+
+const Context = React.createContext();
+export const useCampuses = () => useContext(Context);
+
+const CampusesProvider = ({ children }) => {
+  const [campuses, setCampuses] = useState([]);
+  const [currentCampus, setCurrentCampus] = useState({});
+
+  useEffect(() => {
+    getCampuses(db);
+  }, []);
+
+  async function getCampuses(db) {
+    const campusesCol = collection(db, "campuses");
+    const campusesSnapshot = await getDocs(campusesCol);
+    const campusesList = campusesSnapshot.docs.map((doc) => doc.data());
+    console.log("campusesList", campusesList);
+    setCampuses(campusesList);
+    setCurrentCampus(campusesList[0]);
+  }
+
+  const switchCampuses = (name) => {
+    console.log("i am here", name);
+    let newCurrent = campuses.filter((campus) => campus.name === name);
+    console.log({newCurrent})
+    setCurrentCampus(newCurrent);
+  };
+
+  let values = {
+    campuses,
+    currentCampus,
+    changeCampus: switchCampuses,
+  };
+  return (
+    <Context.Provider value={values}>
+      {children}
+    </Context.Provider>
+  );
+};
+
+export default CampusesProvider;
